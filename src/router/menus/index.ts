@@ -21,7 +21,7 @@ Object.keys(modules).forEach((key) => {
 });
 
 // ===========================
-// ==========Helper===========
+// ==========帮助者===========
 // ===========================
 
 const getPermissionMode = () => {
@@ -77,7 +77,7 @@ export async function getCurrentParentPath(currentPath: string) {
   return allParentPath?.[0];
 }
 
-// Get the level 1 menu, delete children
+// 获取1级菜单，删除子级
 export async function getShallowMenus(): Promise<Menu[]> {
   const menus = await getAsyncMenus();
   const shallowMenuList = menus.map((item) => ({ ...item, children: undefined }));
@@ -88,7 +88,7 @@ export async function getShallowMenus(): Promise<Menu[]> {
   return shallowMenuList;
 }
 
-// Get the children of the menu
+// 获取菜单的子项
 export async function getChildrenMenus(parentPath: string) {
   const menus = await getMenus();
   const parent = menus.find((item) => item.path === parentPath);
