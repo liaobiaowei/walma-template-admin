@@ -1,12 +1,12 @@
 <template>
   <div>资源库管理</div>
 </template>
-<!-- <script>
+<script>
   export default {
     name: 'ImgPool',
     components: {},
     props: {},
     setup() {},
   };
-</script> -->
+</script>
 <style scoped></style>
