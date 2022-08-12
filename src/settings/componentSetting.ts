@@ -1,51 +1,51 @@
-// Used to configure the general configuration of some components without modifying the components
+// 用于配置某些组件的常规配置，而不修改组件
 
 import type { SorterResult } from '../components/Table';
 
 export default {
-  // basic-table setting
+  // 基本表设置
   table: {
-    // Form interface request general configuration
-    // support xxx.xxx.xxx
+    // 表单界面请求常规配置
+    // 支持 xxx.xxx.xxx
     fetchSetting: {
-      // The field name of the current page passed to the background
+      // 传递到后台的当前页面的字段名称
       pageField: 'page',
-      // The number field name of each page displayed in the background
+      // 背景中显示的每个页面的数字字段名称
       sizeField: 'pageSize',
-      // Field name of the form data returned by the interface
+      // 接口返回的表单数据的字段名称
       listField: 'items',
-      // Total number of tables returned by the interface field name
+      // 接口字段名称返回的表总数
       totalField: 'total',
     },
-    // Number of pages that can be selected
+    // 可以选择的页数
     pageSizeOptions: ['10', '50', '80', '100'],
-    // Default display quantity on one page
+    // 一页上的默认显示数量
     defaultPageSize: 10,
-    // Default Size
+    // 默认大小
     defaultSize: 'middle',
-    // Custom general sort function
+    // 自定义常规排序功能
     defaultSortFn: (sortInfo: SorterResult) => {
       const { field, order } = sortInfo;
       if (field && order) {
         return {
-          // The sort field passed to the backend you
+          // 传递给后端的排序字段
           field,
-          // Sorting method passed to the background asc/desc
+          // 传递给后台 asc/desc 的排序方法
           order,
         };
       } else {
         return {};
       }
     },
-    // Custom general filter function
+    // 自定义常规过滤功能
     defaultFilterFn: (data: Partial<Recordable<string[]>>) => {
       return data;
     },
   },
-  // scrollbar setting
+  // 滚动条设置
   scrollbar: {
-    // Whether to use native scroll bar
-    // After opening, the menu, modal, drawer will change the pop-up scroll bar to native
+    // 是否使用本机滚动条
+    // 打开后，菜单，模式，抽屉会将弹出式滚动条更改为本机
     native: false,
   },
 };

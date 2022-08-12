@@ -28,17 +28,38 @@
         <a-button type="primary" html-type="submit">Submit</a-button>
       </Form.Item>
     </Form> -->
+    <Form layout="inline" labelCol="{ span: 7, offset: 1 }">
+      <FormItem label="Username">
+        <Input />
+      </FormItem>
+      <FormItem>
+        <Button type="primary" preIcon="gg:loadbar-doc">搜索</Button>
+        <Button type="primary">
+          <step-backward-outlined />
+          搜索</Button
+        >
+      </FormItem>
+    </Form>
+
+    <a-row>
+      <a-col :span="12">col-12</a-col>
+    </a-row>
   </div>
 </template>
 <script lang="ts">
-  // import { Form } from 'ant-design-vue';
-
+  import { Form, Input } from 'ant-design-vue';
+  import { Button } from '/@/components/Button';
   import { getDesignList } from '/@/api/largeScreen/api';
   // import { designListParams } from '/@/api/largeScreen/paramModel';
   import { defineComponent, onMounted, reactive } from 'vue';
-  // import FormItem from '/@/components/Form/src/components/FormItem.vue';
 
   export default defineComponent({
+    components: {
+      Form,
+      FormItem: Form.FormItem,
+      Input,
+      Button,
+    },
     setup() {
       const searchParams = reactive({
         title: '',
