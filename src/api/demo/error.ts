@@ -1,12 +1,12 @@
 import { defHttp } from '/@/utils/http/axios';
 
 enum Api {
-  // The address does not exist
+  // 地址不存在
   Error = '/error',
 }
 
-/**
- * @description: Trigger ajax error
+/**RS
+ * @description：触发ajax错误
  */
 
 export const fireErrorApi = () => defHttp.get({ url: Api.Error });

@@ -1,5 +1,5 @@
 /**
- * @description: Login interface parameters
+ * @description：登录接口参数
  */
 export interface LoginParams {
   username: string;
@@ -12,7 +12,7 @@ export interface RoleInfo {
 }
 
 /**
- * @description: Login interface return value
+ * @description：登录接口返回值
  */
 export interface LoginResultModel {
   userId: string | number;
@@ -21,7 +21,7 @@ export interface LoginResultModel {
 }
 
 /**
- * @description: Get user information return value
+ * @description：获取用户信息返回值
  */
 export interface GetUserInfoModel {
   roles: RoleInfo[];

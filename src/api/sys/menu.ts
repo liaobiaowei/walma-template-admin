@@ -6,7 +6,7 @@ enum Api {
 }
 
 /**
- * @description: Get user menu based on id
+ * @description：基于 id 获取用户菜单
  */
 
 export const getMenuList = () => {

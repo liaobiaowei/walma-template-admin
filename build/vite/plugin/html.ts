@@ -19,7 +19,7 @@ export function configHtmlPlugin(env: ViteEnv, isBuild: boolean) {
   const htmlPlugin: Plugin[] = html({
     minify: isBuild,
     inject: {
-      // Inject data into ejs template
+      // 将数据注入 ejs 模板
       data: {
         title: VITE_GLOB_APP_TITLE,
       },
