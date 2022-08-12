@@ -9,6 +9,11 @@
         </span>
       </div>
     </template>
+    <Form name="basic" :label-col="{ span: 4 }" autocomplete="off">
+      <Form.Item label="Password">
+        <Button type="primary" html-type="submit">Submit</Button>
+      </Form.Item>
+    </Form>
     <Description @register="infoRegister" class="enter-y" />
     <Description @register="register" class="my-4 enter-y" />
     <Description @register="registerDev" class="enter-y" />
@@ -16,7 +21,7 @@
 </template>
 <script lang="ts" setup>
   import { h } from 'vue';
-  import { Tag } from 'ant-design-vue';
+  import { Tag, Form, Button } from 'ant-design-vue';
   import { PageWrapper } from '/@/components/Page';
   import { Description, DescItem, useDescription } from '/@/components/Description/index';
   import { GITHUB_URL, SITE_URL, DOC_URL } from '/@/settings/siteSetting';

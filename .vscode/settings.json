@@ -65,6 +65,7 @@
   "path-intellisense.mappings": {
     "/@/": "${workspaceRoot}/src"
   },
+  "stylelint.validate": ["css", "less", "postcss", "scss", "vue", "sass"],
   "[javascriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
