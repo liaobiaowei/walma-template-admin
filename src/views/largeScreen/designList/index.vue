@@ -30,19 +30,15 @@
     </Form> -->
   </div>
 </template>
-<!-- <script lang="ts">
+<script lang="ts">
   // import { Form } from 'ant-design-vue';
 
-  // import { getDesignList } from '/@/api/largeScreen/api';
+  import { getDesignList } from '/@/api/largeScreen/api';
   // import { designListParams } from '/@/api/largeScreen/paramModel';
-  // import { defineComponent, onMounted, reactive } from 'vue';
+  import { defineComponent, onMounted, reactive } from 'vue';
   // import FormItem from '/@/components/Form/src/components/FormItem.vue';
 
   export default defineComponent({
-    Components: {
-      // Form,
-      // FormItem,
-    },
     setup() {
       const searchParams = reactive({
         title: '',
@@ -54,7 +50,6 @@
       };
       let getDesignListHandler = async () => {
         try {
-          // const { goHome = true, mode, ...loginParams } = params;
           console.log(searchParams);
           const data = await getDesignList(searchParams);
           console.log(data);
@@ -74,10 +69,11 @@
     },
     // components: { FormItem },
   });
-</script> -->
+</script>
 <style scoped lang="less">
   .design-list {
     padding: 20px;
+
     .design-create {
       margin: 20px 0;
     }
