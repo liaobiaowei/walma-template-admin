@@ -17,7 +17,7 @@ const largeScreen: AppRouteModule = {
     {
       path: 'designList',
       name: 'DesignList',
-      component: () => import('/@/views/largeScreen/designList/index.vue'),
+      component: () => import('/@/views/largeScreen/project/items/index.vue'),
       meta: {
         title: t('大屏列表'),
       },

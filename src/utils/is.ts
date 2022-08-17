@@ -32,6 +32,14 @@ export function isEmpty<T = unknown>(val: T): val is T {
   return false;
 }
 
+/**
+ * * 判断是否是预览页
+ * @returns boolean
+ */
+export const isPreview = () => {
+  return document.location.hash.includes('preview');
+};
+
 export function isDate(val: unknown): val is Date {
   return is(val, 'Date');
 }
@@ -47,6 +55,13 @@ export function isNullAndUnDef(val: unknown): val is null | undefined {
 export function isNullOrUnDef(val: unknown): val is null | undefined {
   return isUnDef(val) || isNull(val);
 }
+/**
+ * * 判断是否是开发环境
+ * @return { Boolean }
+ */
+export const isDev = () => {
+  return import.meta.env.DEV;
+};
 
 export function isNumber(val: unknown): val is number {
   return is(val, 'Number');

@@ -6,6 +6,8 @@ import 'virtual:windi-utilities.css';
 import 'virtual:svg-icons-register';
 import App from './App.vue';
 import { createApp } from 'vue';
+import { setupNaive, setupDirectives, setupCustomComponents } from '/@/plugins';
+
 import { initAppConfigStore } from '/@/logics/initAppConfig';
 import { setupErrorHandle } from '/@/logics/error-handle';
 import { router, setupRouter } from '/@/router';
@@ -14,6 +16,11 @@ import { setupStore } from '/@/store';
 import { setupGlobDirectives } from '/@/directives';
 import { setupI18n } from '/@/locales/setupI18n';
 import { registerGlobComp } from '/@/components/registerGlobComp';
+
+// 引入动画
+import 'animate.css/animate.min.css';
+// 引入标尺
+import 'vue3-sketch-ruler/lib/style.css';
 
 // 在本地开发中按需导入将使浏览器请求的数量增加约20%。
 // 这可能会降低浏览器刷新速度。
@@ -33,6 +40,15 @@ async function bootstrap() {
 
   // 注册全局组件
   registerGlobComp(app);
+
+  // 注册全局常用的 naive-ui 组件
+  setupNaive(app);
+
+  // 注册大屏全局自定义指令
+  setupDirectives(app);
+
+  // 注册大屏全局自定义组件
+  setupCustomComponents(app);
 
   // 多语言配置
   // 异步情况：可以从服务器端获取语言文件
@@ -54,6 +70,8 @@ async function bootstrap() {
   // await router.isReady（）;
 
   app.mount('#app');
+  // 挂载到 window
+  window['$vue'] = app;
 }
 
 bootstrap();

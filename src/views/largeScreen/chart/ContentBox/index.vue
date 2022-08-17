@@ -1,0 +1,182 @@
+<template>
+  <!-- 每个小模块的公共样式 -->
+  <div class="go-content-box" :class="[`bg-depth${depth}`, flex && 'flex']">
+    <div v-if="showTop" class="top go-mt-0 go-flex-no-wrap">
+      <n-space class="go-flex-no-wrap" :size="5">
+        <n-ellipsis>
+          <n-text>{{ title }}</n-text>
+        </n-ellipsis>
+        <div class="mt-1">
+          <slot name="icon"></slot>
+        </div>
+      </n-space>
+      <n-space>
+        <slot name="top-right"></slot>
+        <n-icon v-show="backIcon" size="20" class="go-cursor-pointer" @click="backHandle">
+          <chevron-back-outline-icon />
+        </n-icon>
+      </n-space>
+    </div>
+
+    <div
+      class="content"
+      :class="{
+        'content-height-show-top-bottom': showBottom || showTop,
+        'content-height-show-both': showBottom && showTop,
+      }"
+    >
+      <template v-if="xScroll">
+        <n-scrollbar x-scrollable>
+          <n-scrollbar>
+            <slot></slot>
+          </n-scrollbar>
+        </n-scrollbar>
+      </template>
+
+      <template v-else>
+        <n-scrollbar>
+          <slot></slot>
+        </n-scrollbar>
+      </template>
+    </div>
+
+    <div v-if="showBottom" class="bottom go-mt-0">
+      <slot name="bottom"></slot>
+    </div>
+    <div class="aside">
+      <slot name="aside"></slot>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+  import { icon } from '/@/plugins';
+  const { ChevronBackOutlineIcon } = icon.ionicons5;
+
+  const emit = defineEmits(['back']);
+
+  defineProps({
+    title: String,
+    showTop: {
+      type: Boolean,
+      default: true,
+    },
+    showBottom: {
+      type: Boolean,
+      default: false,
+    },
+    flex: {
+      type: Boolean,
+      default: false,
+    },
+    // back
+    backIcon: {
+      type: Boolean,
+      default: true,
+    },
+    // 背景深度
+    depth: {
+      type: Number,
+      default: 1,
+    },
+    // x 轴滚动
+    xScroll: {
+      type: Boolean,
+      default: false,
+    },
+  });
+
+  const backHandle = () => {
+    emit('back');
+  };
+</script>
+
+<style lang="less" scoped>
+  @topOrBottomHeight: 40px;
+
+  .go-content-box {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 78px);
+    margin: 1px;
+    margin-bottom: 0;
+
+    &.bg-depth0 {
+      background-color: var(--background-color1);
+
+      .bottom,
+      .top {
+        background-color: var(--background-color1);
+      }
+    }
+
+    &.bg-depth1 {
+      background-color: var(--background-color1);
+
+      .bottom,
+      .top {
+        background-color: var(--background-color2);
+      }
+    }
+
+    &.bg-depth2 {
+      background-color: var(--background-color2);
+
+      .bottom,
+      .top {
+        background-color: var(--background-color3);
+      }
+    }
+
+    &.bg-depth3 {
+      background-color: var(--background-color3);
+
+      .bottom,
+      .top {
+        background-color: var(--background-color4);
+      }
+    }
+
+    &.flex {
+      flex: 1;
+    }
+
+    .top,
+    .bottom {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      align-items: center;
+      height: @topOrBottomHeight;
+      padding: 0 10px;
+      border-top: 1px solid;
+      @include fetch-border-color('hover-border-color');
+
+      .mt-1 {
+        margin-top: 2px;
+      }
+    }
+
+    .top {
+      border-bottom: 1px solid;
+      @include fetch-border-color('background-color1');
+    }
+
+    .content {
+      height: calc(100vh - 78px);
+      overflow: hidden;
+    }
+
+    .aside {
+      position: relative;
+    }
+
+    .content-height-show-top-bottom {
+      height: calc(100vh - 78px - @topOrBottomHeight);
+    }
+
+    .content-height-show-both {
+      height: calc(100vh - 78px - @topOrBottomHeight - @topOrBottomHeight);
+    }
+  }
+</style>

@@ -48,7 +48,7 @@
 </template>
 <script lang="ts">
   import { Form, Input } from 'ant-design-vue';
-  import { Button } from '/@/components/Button';
+  import { Button } from '/@/components/largeScreen/Button';
   import { getDesignList } from '/@/api/largeScreen/api';
   // import { designListParams } from '/@/api/largeScreen/paramModel';
   import { defineComponent, onMounted, reactive } from 'vue';
